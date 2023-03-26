@@ -1,0 +1,18 @@
+sudo apt install docker.io
+sudo docker pull hello-world
+sudo docker run -t -i hello-world
+sudo docker pull alpine
+sudo docker run -i -t --name Alpine alpine
+sudo docker cp Alpine:/HelloWorld.txt /home/romankolin/Downloads
+mkdir HelloWorld && cd HelloWorld && echo 'Hello World' > HelloWorld.txt
+cd .. && sudo docker cp HelloWorld Alpine:/
+sudo docker start -i Alpine
+sudo docker exec -i -t Alpine /usr/bin/vi
+sudo docker build -t ssh .
+sudo docker run -d -t -p 2222:22 --name SSH ssh
+sudo docker stop SSH
+sudo docker volume create Space
+sudo docker run -d -t -v space:/firstspace -v /home/romankolin/Downloads/Share:/secondspace -p 3333:22 --name Space space
+sudo docker run -d -t -v space:/firstspace -p 2222:22 --name SSH space
+sudo docker stop SSH
+sudo docker stop Space
